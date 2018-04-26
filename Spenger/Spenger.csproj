@@ -43,7 +43,14 @@
   <ItemGroup>
     <Compile Include="Components\BasicDrawComponent.cs" />
     <Compile Include="Components\Component.cs" />
+    <Compile Include="Components\ControlComponent.cs" />
+    <Compile Include="Components\EComponentType.cs" />
+    <Compile Include="Components\IDrawableComponent.cs" />
+    <Compile Include="Components\IUpdateableComponent.cs" />
     <Compile Include="Components\TransformComponent.cs" />
+    <Compile Include="Entities\IDrawable.cs" />
+    <Compile Include="Entities\IUpdateable.cs" />
+    <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Global.cs" />

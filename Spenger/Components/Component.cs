@@ -1,18 +1,12 @@
-﻿using System;
+﻿using Spenger.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Speng
+namespace Spenger.Components
 {
-    enum ComponentType
-    {
-        Transform,
-        Control,
-        BasicDraw
-    }
-
     public abstract class Component
     {
         public Entity Parent { get; private set; }
@@ -22,15 +16,15 @@ namespace Speng
         }
     }
 
-    public abstract class UComponent : Component
-    {
-        public UComponent(Entity parent) : base(parent) { }
-        public abstract void Update();
-    }
+    //public abstract class UpdateableComponent : Component
+    //{
+    //    public UpdateableComponent(Entity parent) : base(parent) { }
+    //    public abstract void Update();
+    //}
 
-    public abstract class DComponent : Component
-    {
-        public DComponent(Entity parent) : base(parent) { }
-        public abstract void Draw();
-    }
+    //public abstract class DrawableComponent : Component
+    //{
+    //    public DrawableComponent(Entity parent) : base(parent) { }
+    //    public abstract void Draw();
+    //}
 }

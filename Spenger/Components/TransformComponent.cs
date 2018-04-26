@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Spenger.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Speng.Components
+namespace Spenger.Components
 {
     public class TransformComponent : Component
     {

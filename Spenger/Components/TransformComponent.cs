@@ -10,8 +10,8 @@ namespace Spenger.Components
 {
     public class TransformComponent : Component
     {
-        public Vector2 Position { get; set; }
-        public Vector2 Size { get; set; }
+        public Vector2 Position;
+        public Vector2 Size;
         public Rectangle Rectangle
         {
             get { return new Rectangle(Position.ToPoint(), Size.ToPoint()); }

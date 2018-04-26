@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Spenger.Components
 {
-    public enum EComponentType
-    {
-        Transform,
-        Control,
-        BasicDraw
-    }
+    //public enum EComponentType
+    //{
+    //    Transform,
+    //    Control,
+    //    BasicDraw
+    //}
 }

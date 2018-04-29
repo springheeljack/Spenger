@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Speng;
 using Spenger.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,12 +12,16 @@ namespace Spenger.Components
 {
     public class BasicDrawComponent : Component, IDrawableComponent
     {
-        public BasicDrawComponent(Entity parent) : base(parent) { }
-        public Texture2D Texture { get; private set; }
+        public BasicDrawComponent()
+        {
+
+        }
 
         public void Draw()
         {
-
+            TextureComponent texture = Parent.GetComponent<TextureComponent>();
+            TransformComponent transform = Parent.GetComponent<TransformComponent>();
+            Global.spriteBatch.Draw(texture.Texture, transform.Rectangle, Color.White);
         }
     }
 }

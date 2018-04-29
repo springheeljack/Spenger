@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Speng.Managers;
+using Spenger.Entities;
+using Spenger.Managers;
 
 namespace Speng
 {
@@ -13,34 +16,41 @@ namespace Speng
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Global.content = Content;
+            IsMouseVisible = true;
+            graphics.PreferredBackBufferWidth = Global.WindowWidth;
+            graphics.PreferredBackBufferHeight = Global.WindowHeight;
+            Window.Position = new Point(200);
+
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+
 
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Global.spriteBatch = spriteBatch;
 
-            // TODO: use this.Content to load your game content here
+            TextureManager.LoadTextures();
+
+            EntityManager.AddEntity(new Player(new Vector2(100)));
         }
 
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            Global.gameTime = gameTime;
 
-            // TODO: Add your update logic here
+            EntityManager.Update();
 
             base.Update(gameTime);
         }
@@ -49,7 +59,11 @@ namespace Speng
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            EntityManager.Draw();
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

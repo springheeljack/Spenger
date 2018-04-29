@@ -10,7 +10,7 @@ namespace Spenger.Components
 {
     public class ControlComponent : Component, IUpdateableComponent
     {
-        public ControlComponent(Entity parent) : base(parent)
+        public ControlComponent()
         {
         }
 
@@ -20,6 +20,12 @@ namespace Spenger.Components
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.W))
                 tc.Position.Y--;
+            if (keyboardState.IsKeyDown(Keys.S))
+                tc.Position.Y++;
+            if (keyboardState.IsKeyDown(Keys.A))
+                tc.Position.X--;
+            if (keyboardState.IsKeyDown(Keys.D))
+                tc.Position.X++;
         }
     }
 }

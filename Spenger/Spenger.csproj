@@ -44,9 +44,9 @@
     <Compile Include="Components\BasicDrawComponent.cs" />
     <Compile Include="Components\Component.cs" />
     <Compile Include="Components\ControlComponent.cs" />
-    <Compile Include="Components\EComponentType.cs" />
     <Compile Include="Components\IDrawableComponent.cs" />
     <Compile Include="Components\IUpdateableComponent.cs" />
+    <Compile Include="Components\TextureComponent.cs" />
     <Compile Include="Components\TransformComponent.cs" />
     <Compile Include="Entities\IDrawable.cs" />
     <Compile Include="Entities\IUpdateable.cs" />
@@ -54,9 +54,10 @@
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Textures.cs" />
+    <Compile Include="Managers\TextureManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

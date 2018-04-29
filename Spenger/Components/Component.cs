@@ -9,22 +9,13 @@ namespace Spenger.Components
 {
     public abstract class Component
     {
-        public Entity Parent { get; private set; }
-        public Component(Entity parent)
+        public Entity Parent;
+        //public Component(Entity parent)
+        //{
+        //    Parent = parent;
+        //}
+        public Component()
         {
-            Parent = parent;
         }
     }
-
-    //public abstract class UpdateableComponent : Component
-    //{
-    //    public UpdateableComponent(Entity parent) : base(parent) { }
-    //    public abstract void Update();
-    //}
-
-    //public abstract class DrawableComponent : Component
-    //{
-    //    public DrawableComponent(Entity parent) : base(parent) { }
-    //    public abstract void Draw();
-    //}
 }

@@ -16,7 +16,7 @@ namespace Spenger.Components
         {
             get { return new Rectangle(Position.ToPoint(), Size.ToPoint()); }
         }
-        public TransformComponent(Entity parent,Vector2 position,Vector2 size) : base(parent)
+        public TransformComponent(Vector2 position,Vector2 size)
         {
             Position = position;
             Size = size;

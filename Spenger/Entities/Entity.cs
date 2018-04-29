@@ -9,14 +9,17 @@ namespace Spenger.Entities
 {
     public abstract class Entity
     {
-        //private Dictionary<Type, Component> Components = new Dictionary<Type, Component>();
-        private List<Component> Components = new List<Component>();
+        protected List<Component> Components = new List<Component>();
         public T GetComponent<T>() where T : Component
         {
-            return (T)(Components.OfType<T>());
+            foreach (Component c in Components)
+                if (c is T)
+                    return c as T;
+            return null;
         }
         public void AddComponent(Component component)
         {
+            component.Parent = this;
             Components.Add(component);
         }
     }

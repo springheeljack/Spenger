@@ -1,9 +1,6 @@
 ﻿using Spenger.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Spenger.Managers
 {
@@ -13,13 +10,13 @@ namespace Spenger.Managers
 
         public static void Update()
         {
-            foreach (IUpdateable u in Entities)
+            foreach (IUpdateable u in Entities.OfType<IUpdateable>())
                 u.Update();
         }
 
         public static void Draw()
         {
-            foreach (IDrawable d in Entities)
+            foreach (IDrawable d in Entities.OfType<IDrawable>())
                 d.Draw();
         }
 

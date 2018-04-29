@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Speng
+namespace Spenger
 {
 #if WINDOWS || LINUX
     /// <summary>

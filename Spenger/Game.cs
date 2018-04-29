@@ -1,11 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Speng.Managers;
-using Spenger.Entities;
 using Spenger.Managers;
+using Spenger.Entities;
+using Spenger.Entities.ResourceNodes;
 
-namespace Speng
+namespace Spenger
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
@@ -38,7 +37,19 @@ namespace Speng
 
             TextureManager.LoadTextures();
 
-            EntityManager.AddEntity(new Player(new Vector2(100)));
+            Entity player = new Player(new Vector2(100));
+            EntityManager.AddEntity(player);
+            Camera camera = new Camera(player);
+            EntityManager.AddEntity(camera);
+            Global.camera = camera;
+
+            EntityManager.AddEntity(new CoalRock(new Vector2(50)));
+
+            EntityManager.AddEntity(new IronRock(new Vector2(150)));
+
+            //Map.LoadMap("Content/Map/map1.smap");
+            Map.LoadMap("Content/Map/map2.smap");
+            Map.InitializeTextures();
         }
 
         protected override void UnloadContent()
@@ -50,6 +61,8 @@ namespace Speng
         {
             Global.gameTime = gameTime;
 
+            InputManager.Update();
+
             EntityManager.Update();
 
             base.Update(gameTime);
@@ -57,9 +70,11 @@ namespace Speng
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
+
+            Map.Draw();
 
             EntityManager.Draw();
 

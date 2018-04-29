@@ -1,19 +1,18 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Speng.Managers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Spenger.Managers;
 
 namespace Spenger.Components
 {
     public class TextureComponent : Component
     {
         public Texture2D Texture;
-        public TextureComponent(string texturePath)
+        //public TextureComponent(string texturePath)
+        //{
+        //    Texture = TextureManager.Textures[texturePath];
+        //}
+        public TextureComponent(Texture2D texture)
         {
-            Texture = TextureManager.Textures[texturePath];
+            Texture = texture;
         }
     }
 }

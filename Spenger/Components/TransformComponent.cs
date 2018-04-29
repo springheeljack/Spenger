@@ -1,10 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Spenger.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Spenger.Components
 {
@@ -15,6 +9,10 @@ namespace Spenger.Components
         public Rectangle Rectangle
         {
             get { return new Rectangle(Position.ToPoint(), Size.ToPoint()); }
+        }
+        public Rectangle DrawingRectangle
+        {
+            get { return new Rectangle((Position - Global.camera.transform.Position).ToPoint(), Size.ToPoint()); }
         }
         public TransformComponent(Vector2 position,Vector2 size)
         {

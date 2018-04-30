@@ -12,7 +12,8 @@ namespace Spenger.Components
 {
     public class CameraComponent : Component, IUpdateableComponent
     {
-        //public float ZoomLevel { get; private set; } = 1.0f;
+        public float ZoomLevel { get; private set; } = 1.0f;
+        public Vector2 Centre { get; private set; }
         public Entity Follow;
 
         public CameraComponent(Entity follow)
@@ -22,7 +23,15 @@ namespace Spenger.Components
 
         public void Update()
         {
-            Parent.transform.Position = Follow.transform.Position - new Vector2(Global.WindowWidth / 2.0f, Global.WindowHeight / 2.0f);
+            Centre = Follow.transform.Position;
+            Centre += Follow.transform.Size / 2.0f;
+
+            if (InputManager.ScrolledUp)
+                ZoomLevel *= 2.0f;
+            else if (InputManager.ScrolledDown)
+                ZoomLevel /= 2.0f;
+
+            Parent.transform.Position = Follow.transform.Position - new Vector2(Global.WindowWidth / 2.0f, Global.WindowHeight / 2.0f) / ZoomLevel;
             Parent.transform.Position += Follow.transform.Size / 2;
         }
     }

@@ -37,7 +37,9 @@ namespace Spenger
 
             TextureManager.LoadTextures();
 
-            Entity player = new Player(new Vector2(100));
+            ItemManager.Initialize();
+
+            var player = new Player(new Vector2(100));
             EntityManager.AddEntity(player);
             Camera camera = new Camera(player);
             EntityManager.AddEntity(camera);
@@ -50,6 +52,8 @@ namespace Spenger
             //Map.LoadMap("Content/Map/map1.smap");
             Map.LoadMap("Content/Map/map2.smap");
             Map.InitializeTextures();
+
+            UIManager.Initialize(player);
         }
 
         protected override void UnloadContent()
@@ -72,11 +76,13 @@ namespace Spenger
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied,SamplerState.PointClamp, null, null, null, null);
 
             Map.Draw();
 
             EntityManager.Draw();
+
+            UIManager.Draw();
 
             spriteBatch.End();
 

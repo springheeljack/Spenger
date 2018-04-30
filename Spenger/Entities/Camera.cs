@@ -13,5 +13,13 @@ namespace Spenger.Entities
             CameraComponent = new CameraComponent(follow);
             AddComponent(CameraComponent);
         }
+        public Vector2 CalculateDrawingPosition(Vector2 position)
+        {
+            Vector2 newPos = position;
+            newPos -= CameraComponent.Centre;
+            newPos *= CameraComponent.ZoomLevel;
+            newPos += Global.HalfWindowSize;
+            return newPos;
+        }
     }
 }

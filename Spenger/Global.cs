@@ -13,5 +13,7 @@ namespace Spenger
         public static Camera camera;
         public static int WindowWidth = 1280;
         public static int WindowHeight = 720;
+        public static Point WindowSize = new Point(WindowWidth, WindowHeight);
+        public static Vector2 HalfWindowSize = WindowSize.ToVector2() / 2;
     }
 }

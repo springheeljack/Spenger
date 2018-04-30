@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Components\CameraComponent.cs" />
+    <Compile Include="Components\InventoryComponent.cs" />
     <Compile Include="Entities\Camera.cs" />
     <Compile Include="Components\BasicDrawComponent.cs" />
     <Compile Include="Components\Component.cs" />
@@ -59,8 +60,11 @@
     <Compile Include="Entities\ResourceNodes\ResourceNode.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\InputManager.cs" />
+    <Compile Include="Managers\ItemManager.cs" />
+    <Compile Include="Managers\UIManager.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

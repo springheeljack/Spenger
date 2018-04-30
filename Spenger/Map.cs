@@ -48,7 +48,10 @@ namespace Spenger
         {
             for (int x = 0; x < 100; x++)
                 for (int y = 0; y < 100; y++)
-                    Global.spriteBatch.Draw(tileTextures[tiles[x, y]], new Rectangle((new Vector2(x * 16, y * 16)-Global.camera.transform.Position).ToPoint(),new Vector2(16).ToPoint()), Color.White);
+                {
+                    var pos = new Vector2(x * 16, y * 16);
+                    Global.spriteBatch.Draw(tileTextures[tiles[x, y]], Global.camera.CalculateDrawingPosition(pos), null, Color.White, 0, Vector2.Zero, Global.camera.CameraComponent.ZoomLevel, SpriteEffects.None, 0);
+                }
         }
     }
 }

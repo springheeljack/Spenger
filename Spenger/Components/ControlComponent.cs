@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Spenger.Managers;
 
 namespace Spenger.Components
@@ -10,14 +11,28 @@ namespace Spenger.Components
         public void Update()
         {
             //Movement
+            var movement = new Vector2(0);
             if (InputManager.IsKeyDown(Keys.W))
-                Parent.transform.Position.Y--;
+                movement.Y--;
             if (InputManager.IsKeyDown(Keys.S))
-                Parent.transform.Position.Y++;
+                movement.Y++;
             if (InputManager.IsKeyDown(Keys.A))
-                Parent.transform.Position.X--;
+                movement.X--;
             if (InputManager.IsKeyDown(Keys.D))
-                Parent.transform.Position.X++;
+                movement.X++;
+            if (movement.LengthSquared() != 0f)
+                movement.Normalize();
+            Parent.transform.Position += movement;
+
+            TextureComponent texture = Parent.GetComponent<TextureComponent>();
+            if (movement.X < 0)
+                texture.Texture = TextureManager.Textures["Player_L"];
+            else if (movement.X > 0)
+                texture.Texture = TextureManager.Textures["Player_R"];
+            else if (movement.Y < 0)
+                texture.Texture = TextureManager.Textures["Player_U"];
+            else if (movement.Y > 0)
+                texture.Texture = TextureManager.Textures["Player_D"];
 
             //Inventory
             if (InputManager.IsKeyHit(Keys.E))

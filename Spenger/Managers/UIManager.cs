@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Spenger.Components;
 using Spenger.Entities;
+using Spenger.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Spenger.Managers
     {
         static Player Player;
         static float ZoomLevel = 2.0f;
+        public static Entity HoverEntity { private get; set; } = null;
 
         public static void Initialize(Player player)
         {
@@ -22,11 +24,20 @@ namespace Spenger.Managers
 
         public static void Update()
         {
-
+            if (HoverEntity != null)
+            {
+                var pos = Global.camera.CalculateDrawingPosition(HoverEntity.transform.Position);
+                if (!InputManager.CurrentMouseState.Position.Intersects(pos, HoverEntity.transform.Size * Global.camera.CameraComponent.ZoomLevel))
+                    HoverEntity = null;
+            }
         }
 
         public static void Draw()
         {
+            //FPS
+            Global.spriteBatch.DrawString(TextureManager.LargeFont, Math.Round((1.0 / Game.AverageFrameTime), 2).ToString(), new Vector2(10), Color.Red);
+
+            //Inventory
             ControlComponent control = Player.GetComponent<ControlComponent>();
             if (control.IsInventoryOpen)
             {
@@ -61,6 +72,14 @@ namespace Spenger.Managers
                     pos = mousePos - pos;
                     Global.spriteBatch.Draw(TextureManager.Textures["16xSquare"], pos, null, new Color(1f, 1f, 1f, 0.5f), 0, Vector2.Zero, ZoomLevel, SpriteEffects.None, 0);
                 }
+            }
+
+            //Hover and selection
+            if (HoverEntity != null)
+            {
+                var pos = Global.camera.CalculateDrawingPosition(HoverEntity.transform.Position);
+                Global.spriteBatch.Draw(TextureManager.Textures["Reticle"], pos, null, Color.White, 0, Vector2.Zero, Global.camera.CameraComponent.ZoomLevel, SpriteEffects.None, 0);
+
             }
         }
     }

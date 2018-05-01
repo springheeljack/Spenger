@@ -27,9 +27,9 @@ namespace Spenger.Components
             Centre += Follow.transform.Size / 2.0f;
 
             if (InputManager.ScrolledUp)
-                ZoomLevel *= 2.0f;
+                ZoomLevel *= 2f;
             else if (InputManager.ScrolledDown)
-                ZoomLevel /= 2.0f;
+                ZoomLevel /= 2f;
 
             Parent.transform.Position = Follow.transform.Position - new Vector2(Global.WindowWidth / 2.0f, Global.WindowHeight / 2.0f) / ZoomLevel;
             Parent.transform.Position += Follow.transform.Size / 2;

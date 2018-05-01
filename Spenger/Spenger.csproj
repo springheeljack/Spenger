@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Components\CameraComponent.cs" />
+    <Compile Include="Components\HoverComponent.cs" />
     <Compile Include="Components\InventoryComponent.cs" />
     <Compile Include="Entities\Camera.cs" />
     <Compile Include="Components\BasicDrawComponent.cs" />
@@ -58,6 +59,9 @@
     <Compile Include="Entities\ResourceNodes\CoalRock.cs" />
     <Compile Include="Entities\ResourceNodes\IronRock.cs" />
     <Compile Include="Entities\ResourceNodes\ResourceNode.cs" />
+    <Compile Include="Entities\Storage\Chest.cs" />
+    <Compile Include="Entities\Storage\Storage.cs" />
+    <Compile Include="Extensions\PointExtension.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Item.cs" />

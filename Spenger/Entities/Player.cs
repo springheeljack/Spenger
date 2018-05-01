@@ -17,6 +17,7 @@ namespace Spenger.Entities
             AddComponent(new ControlComponent());
             var inv = new InventoryComponent();
             inv.AddItem(ItemType.Coal);
+            inv.AddItem(ItemType.IronOre);
             AddComponent(inv);
         }
     }

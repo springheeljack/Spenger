@@ -13,7 +13,7 @@ namespace Spenger.Managers
         static KeyboardState CurrentKeyboardState;
         static KeyboardState LastKeyboardState;
 
-        static MouseState CurrentMouseState;
+        public static MouseState CurrentMouseState { get; private set; }
         static MouseState LastMouseState;
 
         public static Rectangle MouseRectangle { get; private set; }

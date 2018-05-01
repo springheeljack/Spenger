@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Spenger.Managers;
 using Spenger.Entities;
 using Spenger.Entities.ResourceNodes;
+using Spenger.Entities.Storage;
 
 namespace Spenger
 {
@@ -10,6 +11,10 @@ namespace Spenger
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        const int numOfFrameTimes = 100;
+        double[] frameTimes = new double[numOfFrameTimes];
+        int currentFrameTime = 0;
+        public static double AverageFrameTime { get; private set; }
 
         public Game()
         {
@@ -20,7 +25,6 @@ namespace Spenger
             graphics.PreferredBackBufferWidth = Global.WindowWidth;
             graphics.PreferredBackBufferHeight = Global.WindowHeight;
             Window.Position = new Point(200);
-
         }
 
         protected override void Initialize()
@@ -35,7 +39,7 @@ namespace Spenger
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Global.spriteBatch = spriteBatch;
 
-            TextureManager.LoadTextures();
+            TextureManager.Load();
 
             ItemManager.Initialize();
 
@@ -48,6 +52,8 @@ namespace Spenger
             EntityManager.AddEntity(new CoalRock(new Vector2(50)));
 
             EntityManager.AddEntity(new IronRock(new Vector2(150)));
+
+            EntityManager.AddEntity(new Chest(new Vector2(250)));
 
             //Map.LoadMap("Content/Map/map1.smap");
             Map.LoadMap("Content/Map/map2.smap");
@@ -65,9 +71,21 @@ namespace Spenger
         {
             Global.gameTime = gameTime;
 
+            frameTimes[currentFrameTime] = gameTime.ElapsedGameTime.TotalSeconds;
+            currentFrameTime++;
+            if (currentFrameTime == numOfFrameTimes)
+                currentFrameTime = 0;
+
+            AverageFrameTime = 0;
+            for (int i = 0; i < numOfFrameTimes; i++)
+                AverageFrameTime += frameTimes[i];
+            AverageFrameTime /= numOfFrameTimes;
+
             InputManager.Update();
 
             EntityManager.Update();
+
+            UIManager.Update();
 
             base.Update(gameTime);
         }

@@ -29,7 +29,7 @@ namespace Spenger
 
         protected override void Initialize()
         {
-
+            //graphics.PreferMultiSampling = true;
 
             base.Initialize();
         }
@@ -45,6 +45,7 @@ namespace Spenger
 
             var player = new Player(new Vector2(100));
             EntityManager.AddEntity(player);
+            Global.player = player;
             Camera camera = new Camera(player);
             EntityManager.AddEntity(camera);
             Global.camera = camera;
@@ -94,7 +95,7 @@ namespace Spenger
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied,SamplerState.PointClamp, null, null, null, null);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, SamplerState.PointClamp, null, null, null, null);
 
             Map.Draw();
 

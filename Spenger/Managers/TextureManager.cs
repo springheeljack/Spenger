@@ -10,6 +10,7 @@ namespace Spenger.Managers
         public static string TexturePath { get; } = "Texture";
 
         public static SpriteFont LargeFont { get; private set; }
+        public static SpriteFont MediumFont { get; private set; }
         public static SpriteFont SmallFont { get; private set; }
 
         public static void Load()
@@ -21,6 +22,7 @@ namespace Spenger.Managers
                     Textures.Add(Path.GetFileNameWithoutExtension(file), Global.content.Load<Texture2D>(s));
                 }
             LargeFont = Global.content.Load<SpriteFont>("Font/large");
+            MediumFont = Global.content.Load<SpriteFont>("Font/medium");
             SmallFont = Global.content.Load<SpriteFont>("Font/small");
         }
     }

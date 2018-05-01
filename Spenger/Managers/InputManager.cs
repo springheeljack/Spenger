@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Spenger.Managers
 {
+    public enum MouseButtons
+    {
+        Left,
+        Right
+    }
+
     public static class InputManager
     {
         static KeyboardState CurrentKeyboardState;
@@ -47,6 +48,30 @@ namespace Spenger.Managers
         public static bool IsKeyHit(Keys key)
         {
             return CurrentKeyboardState.IsKeyDown(key) && LastKeyboardState.IsKeyUp(key);
+        }
+        public static bool IsButtonUp(MouseButtons mouseButton)
+        {
+            if (mouseButton == MouseButtons.Left)
+                return CurrentMouseState.LeftButton == ButtonState.Released;
+            else
+
+                return CurrentMouseState.RightButton == ButtonState.Released;
+        }
+        public static bool IsButtonDown(MouseButtons mouseButton)
+        {
+            if (mouseButton == MouseButtons.Left)
+                return CurrentMouseState.LeftButton == ButtonState.Pressed;
+            else
+
+                return CurrentMouseState.RightButton == ButtonState.Pressed;
+        }
+        public static bool IsButtonHit(MouseButtons mouseButton)
+        {
+            if (mouseButton == MouseButtons.Left)
+                return CurrentMouseState.LeftButton == ButtonState.Pressed && LastMouseState.LeftButton == ButtonState.Released;
+            else
+
+                return CurrentMouseState.RightButton == ButtonState.Pressed && LastMouseState.RightButton == ButtonState.Released;
         }
     }
 }

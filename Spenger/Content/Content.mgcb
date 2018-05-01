@@ -235,14 +235,21 @@
 #begin Font/large.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
+/processorParam:PremultiplyAlpha=False
+/processorParam:TextureFormat=NoChange
 /build:Font/large.spritefont
 
 #begin Font/small.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
+/processorParam:PremultiplyAlpha=False
+/processorParam:TextureFormat=NoChange
 /build:Font/small.spritefont
+
+#begin Font/medium.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=False
+/processorParam:TextureFormat=NoChange
+/build:Font/medium.spritefont
 

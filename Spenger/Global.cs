@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Spenger.Entities;
+using System;
 
 namespace Spenger
 {
@@ -15,5 +16,7 @@ namespace Spenger
         public static int WindowHeight = 720;
         public static Point WindowSize = new Point(WindowWidth, WindowHeight);
         public static Vector2 HalfWindowSize = WindowSize.ToVector2() / 2;
+        public static Player player;
+        public static Random random = new Random();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Spenger.Components;
-using Spenger.Entities;
 
 namespace Spenger.Entities
 {

@@ -6,16 +6,18 @@ namespace Spenger.Entities
 {
     public abstract class Entity
     {
-        protected List<Components.Component> Components = new List<Components.Component>();
+        protected List<Component> Components = new List<Component>();
         public TransformComponent transform;
-        public T GetComponent<T>() where T : Components.Component
+        //public string Name { get; private set; } = "No name set";
+
+        public T GetComponent<T>() where T : Component
         {
-            foreach (Components.Component c in Components)
+            foreach (Component c in Components)
                 if (c is T)
                     return c as T;
             return null;
         }
-        public void AddComponent(Components.Component component)
+        public void AddComponent(Component component)
         {
             component.Parent = this;
             Components.Add(component);

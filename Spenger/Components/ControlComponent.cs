@@ -39,6 +39,18 @@ namespace Spenger.Components
             {
                 IsInventoryOpen = !IsInventoryOpen;
             }
+
+            //Left click
+            if (InputManager.IsButtonHit(MouseButtons.Left))
+            {
+
+            }
+
+            //Right click
+            if (InputManager.IsButtonHit(MouseButtons.Right))
+            {
+
+            }
         }
     }
 }

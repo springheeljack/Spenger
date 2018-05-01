@@ -6,7 +6,7 @@ namespace Spenger.Managers
 {
     public static class EntityManager
     {
-        private static List<Entity> Entities = new List<Entity>();
+        public static List<Entity> Entities { get; private set; } = new List<Entity>();
 
         public static void Update()
         {
